@@ -1,4 +1,7 @@
-﻿$diretorioCorrente = Get-Location
+﻿#Atualizando a variável de ambiente da sessão do Powershell
+$Env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")  
+
+$diretorioCorrente = Get-Location
 $configura_instalador = Get-Content "$diretorioCorrente\configura_instalador.ini"
 
 foreach ($item in $configura_instalador){
@@ -25,5 +28,4 @@ foreach ($item in $configura_instalador){
     Invoke-Expression "$cmd $programa_parametro"
 
 }
-
 

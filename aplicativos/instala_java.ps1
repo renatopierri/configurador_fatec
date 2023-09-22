@@ -1,4 +1,6 @@
+$programa_parametro=$args[0]
 $diretorioCorrente = Get-Location
+
 "Instalando o Java $programa_parametro"
 
 $PastaOracle = "C:\Program Files\Oracle"
@@ -11,7 +13,7 @@ if (Test-Path -Path $PastaOracle) {
     if (Test-Path -Path $PastaJava) {
         "Pasta [$PastaJava] existe! ... removendo agora."
         Remove-Item -Recurse -Force $PastaJava
-        "Pasta [$PastaJava] foi removida."
+        "Pasta [$PastaJava] foi removida.`n"
     } 
    
 } else {
@@ -20,18 +22,29 @@ if (Test-Path -Path $PastaOracle) {
     "Pasta [$PastaOracle] criada."
 }
 
-"Copiando o Java para a pasta [$programa_parametro]"
-Copy-Item -Path ".\aplicativos\$programa_parametro" -Destination "C:\Program Files\Oracle\" -Recurse
-"Copiado."
+"Copiando os arquivos Java para $PastaJava"
+Copy-Item -Path "$diretorioCorrente\aplicativos\$programa_parametro" -Destination "C:\Program Files\Oracle\" -Recurse
+"Copiado.`n"
 
-"Criando a variavel JAVA_HOME."
-[Environment]::SetEnvironmentVariable("JAVA_HOME", "$PastaJava\bin", "Machine")
-"Variavel JAVA_HOME criada."
 
-"Adicionando o caminho do Java no Path."
+
+"Configurando a variavel JAVA_HOME para $PastaJava"
+[Environment]::SetEnvironmentVariable("JAVA_HOME", "$PastaJava", "Machine")
+"Variavel JAVA_HOME criada.`n"
+
+
+"Path atual"
+write-host "$env:Path"
+
+"`nAdicionando o caminho do Java no Path."
 $novoPath = "$PastaJava\bin;" + $env:Path
 [Environment]::SetEnvironmentVariable("Path", "$novoPath", "Machine")
-"Pronto."
+
+#Atualizando a variavel de ambiente da sessao do Powershell
+$Env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")  
+
+write-host "$env:Path`n"
 "Java Instalado"
+
 
 
