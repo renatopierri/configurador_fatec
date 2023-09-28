@@ -28,4 +28,3 @@ foreach ($item in $configura_instalador){
     Invoke-Expression "$cmd $programa_parametro"
 
 }
-
