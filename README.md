@@ -20,7 +20,7 @@ Caso queira escolher quais programas deseja instalar, basta comentar a linha com
 Este instalador esta em construcao e novos scripts de instalacao de aplicativos serao adicionados conforme necessario.  <br>
 Caso queira sugerir melhorias, basta entrar em contato comigo :-).  
 
-**Em tempo**
+**Em tempo**  
 Esta aplicacao parte do principio que o suporte de TI sabe o que esta fazendo e eh fornecida "As Is".   
 Nao e destinada ao publico em geral. Use por sua conta e risco.  
 Bugs podem ser reportados, mas nao ha garantias de que serao resolvidos.  
