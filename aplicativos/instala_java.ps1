@@ -53,7 +53,7 @@ if (!($programa_parametro -like "*_Java32*")){
     write-host "Java 64bits instalado em C:\Program Files\Java\$programa_parametro`n"
 
 }else{
-    Write-Host "Java 32bits instalado em C:\Program Files\Java\$programa_parametro"
+    Write-Host "Java 32bits instalado em C:\Program Files\Java\$programa_parametro`n"
     
 }
 
