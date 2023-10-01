@@ -13,11 +13,11 @@ Abrir o prompt do Powershell como administrador.
 Navegar até a pasta raiz do Configurador.  
 Executar o comando .\instala_fatec.ps1  
 Caso necessario, rodar o comando Set-ExecutionPolicy Unrestricted.  
-Os arquivos de instalacao do office deve ficar na pasta office.  
+Os arquivos de instalacao do office devem ficar na pasta office.  
 Os arquivos de instalacao dos demais programas devem ficar na pasta aplicativos.  
 
 **Em construcao**  
-Este instalador esta em construcao e novos scripts de instalacao de aplicativos serao adicionados conforme necessario.  
+Este instalador esta em construcao e novos scripts de instalacao de aplicativos serao adicionados conforme necessario.  <br>
 Caso queira sugerir melhorias, entre em contato comigo.  
   
 **Realizado por Renato de Pierri / nets-nuts.com.br**
