@@ -20,4 +20,4 @@ Os arquivos de instalacao dos demais programas devem ficar na pasta aplicativos.
 Este instalador esta em construcao e novos scripts de instalacao de aplicativos serao adicionados conforme necessario.
 Caso queira sugerir melhorias, entre em contato comigo.
 
-
+**Realizado por Renato de Pierri / nets-nuts.com.br
