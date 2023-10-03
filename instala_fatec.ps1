@@ -1,6 +1,11 @@
 ﻿#Atualizando a variável de ambiente da sessão do Powershell
 $Env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")  
 
+Write-Host "Habilitando caminho de arquivo longo."
+$registryPath = "HKLM:\SYSTEM\ControlSet001\Control\FileSystem";
+If ( !(Test-Path $registryPath) ) { New-Item -Path $registryPath -Force; };
+New-ItemProperty -Path $registryPath -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force;
+
 $diretorioCorrente = Get-Location
 $configura_instalador = Get-Content "$diretorioCorrente\configura_instalador.ini"
 
@@ -26,5 +31,4 @@ foreach ($item in $configura_instalador){
     #write-host ("Proximo comando: $cmd $programa_parametro")
 
     Invoke-Expression "$cmd $programa_parametro"
-
 }
