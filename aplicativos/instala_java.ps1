@@ -1,7 +1,7 @@
 $programa_parametro=$args[0]
 $diretorioCorrente = Get-Location
 
-"Instalando o Java $programa_parametro"
+Write-Host "Instalando o Java $programa_parametro"
 
 $PastaJavaRaiz = "C:\Program Files\Java"
 $PastaJavaVersao = "C:\Program Files\Java\$programa_parametro"
@@ -26,11 +26,11 @@ if (Test-Path -Path $PastaJavaRaiz) {
 
 "Copiando os arquivos Java para $PastaJavaVersao"
 Copy-Item -Path "$diretorioCorrente\aplicativos\$programa_parametro" -Destination "$PastaJavaRaiz" -Recurse
-"Copiado.`n"
+Write-Host "Copiado."
 #======================
 
 
-if (!($programa_parametro -like "*_Java32*")){
+if (!(($programa_parametro -like "*_Java32*") -or ($programa_parametro -like "*+*"))){
     Write-Host "Configurando Java 64bits."
     
     "Configurando a variavel JAVA_HOME para $PastaJavaVersao"
@@ -53,7 +53,7 @@ if (!($programa_parametro -like "*_Java32*")){
     write-host "Java 64bits instalado em C:\Program Files\Java\$programa_parametro`n"
 
 }else{
-    Write-Host "Java 32bits instalado em C:\Program Files\Java\$programa_parametro`n"
+    Write-Host "Java $programa_parametro instalado em C:\Program Files\Java\$programa_parametro`n"
     
 }
 
