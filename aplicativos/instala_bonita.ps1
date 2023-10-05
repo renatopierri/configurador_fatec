@@ -55,9 +55,11 @@ $Shortcut.IconLocation = $TargetPath
 $Shortcut.Save()
 Write-Host "Atalho criado.`n"
 Write-Host "Ajustando o Firewall"
-Get-NetFirewallRule -DisplayName "OpenJDK Platform binary*"|Remove-NetFirewallRule
-New-NetFirewallRule -DisplayName "OpenJDK Platform binary_in" -Direction Inbound -Protocol TCP -Action Allow -Program "$env:ProgramFiles\java\jdk-11.0.20.1+1\bin\javaw.exe" -Enabled True
-New-NetFirewallRule -DisplayName "OpenJDK Platform binary_in" -Direction Inbound -Protocol UDP -Action Allow -Program "$env:ProgramFiles\java\jdk-11.0.20.1+1\bin\javaw.exe" -Enabled True
+Get-NetFirewallRule -DisplayName "OpenJDK Platform binary_bonita*"|Remove-NetFirewallRule
+New-NetFirewallRule -DisplayName "OpenJDK Platform binary_bonita_in_javaw" -Direction Inbound -Protocol TCP -Action Allow -Program "$env:ProgramFiles\java\jdk-11.0.20.1+1\bin\javaw.exe" -Enabled True
+New-NetFirewallRule -DisplayName "OpenJDK Platform binary_bonita_in_javaw" -Direction Inbound -Protocol UDP -Action Allow -Program "$env:ProgramFiles\java\jdk-11.0.20.1+1\bin\javaw.exe" -Enabled True
+New-NetFirewallRule -DisplayName "OpenJDK Platform binary_bonita_in_java" -Direction Inbound -Protocol TCP -Action Allow -Program "$env:ProgramFiles\java\jdk-11.0.20.1+1\bin\java.exe" -Enabled True
+New-NetFirewallRule -DisplayName "OpenJDK Platform binary_bonita_in_java" -Direction Inbound -Protocol UDP -Action Allow -Program "$env:ProgramFiles\java\jdk-11.0.20.1+1\bin\java.exe" -Enabled True
 Write-Host "Firewall Ajustado."
 
 write-host "Bonita Studio instalado em $PastaBonitaRaiz`n"
