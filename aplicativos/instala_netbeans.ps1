@@ -17,9 +17,15 @@ if (Test-Path -Path $PastaNetbeansRaiz) {
     "Pasta [$PastaNetbeansRaiz] criada.`n"
 } 
 
-write-host "Copiando os arquivos Netbeans para $PastaNetbeansRaiz"    
-Expand-Archive -Path $diretorioCorrente\aplicativos\netbeans.zip -DestinationPath $diretorioDestino -Force
-write-host "Copiado.`n"
+#write-host "Copiando os arquivos Netbeans para $PastaNetbeansRaiz"    
+#Expand-Archive -Path $diretorioCorrente\aplicativos\netbeans.zip -DestinationPath $diretorioDestino -Force
+#write-host "Copiado.`n"
+
+write-host "Descompactando os arquivos Netbeans para $PastaNetbeansRaiz com 7zip."    
+$cmd = "7z"
+$parametro =  "x  $diretorioCorrente\aplicativos\netbeans.zip -o"""+$diretorioDestino+""" -y"
+Invoke-Expression "$cmd $parametro"
+write-host "Descompactado.`n"
 
 Write-Host "Verificando se o atalho Netbeans existe"
 $ShortcutPath = "$env:PUBLIC\Desktop\Netbeans.lnk"
@@ -54,6 +60,16 @@ if(!$env:Path.Contains("$PastaNetbeansBin")){
 }
 
 write-host "Netbeans 64bits instalado em $PastaNetbeansRaiz`n"
+Write-Host "Ajustando o Firewall"
+Get-NetFirewallRule -DisplayName "OpenJDK Platform binary_netbeans*"|Remove-NetFirewallRule
+New-NetFirewallRule -DisplayName "OpenJDK Platform binary_netbeans_in_javaw" -Direction Inbound -Protocol TCP -Action Allow -Program "$env:ProgramFiles\java\jdk-20.0.2\bin\javaw.exe" -Enabled True
+New-NetFirewallRule -DisplayName "OpenJDK Platform binary_netbeans_in_javaw" -Direction Inbound -Protocol UDP -Action Allow -Program "$env:ProgramFiles\java\jdk-20.0.2\bin\javaw.exe" -Enabled True
+New-NetFirewallRule -DisplayName "OpenJDK Platform binary_netbeans_in_java" -Direction Inbound -Protocol TCP -Action Allow -Program "$env:ProgramFiles\java\jdk-20.0.2\bin\java.exe" -Enabled True
+New-NetFirewallRule -DisplayName "OpenJDK Platform binary_netbeans_in_java" -Direction Inbound -Protocol UDP -Action Allow -Program "$env:ProgramFiles\java\jdk-20.0.2\bin\java.exe" -Enabled True
+Get-NetFirewallRule -DisplayName "NetBeans IDE*"|Remove-NetFirewallRule
+New-NetFirewallRule -DisplayName "NetBeans IDE" -Direction Inbound -Protocol TCP -Action Allow -Program "$env:ProgramFiles\netbeans\bin\netbeans64.exe" -Enabled True
+New-NetFirewallRule -DisplayName "NetBeans IDE" -Direction Inbound -Protocol UDP -Action Allow -Program "$env:ProgramFiles\netbeans\bin\netbeans64.exe" -Enabled True
+Write-Host "Firewall Ajustado."
 
 
 
