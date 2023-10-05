@@ -1,6 +1,8 @@
 # Configurador Fatec
 Este script Powershell é para ajudar na instalação das aplicações utilizadas nos computadores da Fatec Barueri.
 
+**Somente o script de instalação. Os instaladores devem ser baixados no site do fornecedor **
+
 **Descrição dos arquivos:**<br>
 - **instala_fatec.ps1:** Instalador dos aplicativos. Ele le a configuração do arquivo configura_instalador.ini e faz a chamada dos instaladores de aplicativo. 
 - **configura_instalador.ini:**  Esse arquivo tem os parâmetros de instalacao dos aplicativos, no seguinte formato: \<diretorio\>\;<executavel\>;\<parametro\>;\<descricao\>.  
@@ -21,7 +23,8 @@ Este instalador esta em construcao e novos scripts de instalacao de aplicativos 
 Caso queira sugerir melhorias, basta entrar em contato comigo :-).  
 
 **Em tempo**  
-Esta aplicacao parte do principio que o suporte de TI sabe o que esta fazendo e eh fornecida "As Is".   
+Esta aplicacao parte do principio que o suporte de TI sabe o que esta fazendo e eh fornecida "As Is". 
+Este script **precisa** ser ajustado de acordo com a instalacao do ambiente de sua escola e ou empresa.
 Nao e destinada ao publico em geral. Use por sua conta e risco.  
 Bugs podem ser reportados, mas nao ha garantias de que serao resolvidos.  
   
